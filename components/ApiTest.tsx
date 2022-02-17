@@ -79,7 +79,7 @@ import { StyleSheet } from 'react-native';
 const UpdateButton = ({updateTrigger} : {updateTrigger: () => void}) => (
     <View style={styles.helpContainer}>
     <TouchableOpacity onPress={updateTrigger} style={styles.helpLink}>
-        <Text style={styles.helpLinkText} lightColor={Colors.light.tint}>
+        <Text style={styles.helpLinkText} lightColor={Colors.light.tint} darkColor={Colors.dark.tint}>
             Press this, to force an update on battery and gps.
         </Text>
     </TouchableOpacity>
