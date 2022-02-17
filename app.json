@@ -19,7 +19,12 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "bundleIdentifier": "aau.888aaen.grain-it",
+      "buildNumber": "0.0.1",
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "To show the current location of the user"
+      }
     },
     "android": {
       "adaptiveIcon": {
