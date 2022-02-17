@@ -10,6 +10,8 @@ export default ApiTest = () => {
     const [cords, setCords] = useState<Location.LocationObject| undefined>();
     const [errorMsg, setErrorMsg] = useState("");
 
+    const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+
     const updateBattery: () => void = () => Battery.getBatteryLevelAsync().then(b => setBattery(b));
     function updateGps() {
         setCords(undefined);
@@ -19,6 +21,7 @@ export default ApiTest = () => {
                 setErrorMsg('Permission to access location was denied');
                 return;
             }
+            await sleep(100);
 
             let location = await Location.getCurrentPositionAsync({});
             setCords(location.coords);
