@@ -10,7 +10,7 @@ export default ApiTest = () => {
     const [cords, setCords] = useState<Location.LocationObject| undefined>();
     const [errorMsg, setErrorMsg] = useState("");
 
-    const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+    const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
     const updateBattery: () => void = () => Battery.getBatteryLevelAsync().then(b => setBattery(b));
     function updateGps() {
@@ -69,8 +69,8 @@ const GeoLocation: FC<GeoProps> = ({cords, errorMsg}) => {
 
     return(
         <View>
-            <Text>long: {cords.longitude.toFixed(6)}</Text>
-            <Text>lat:    {cords.latitude.toFixed(6)}</Text>
+            <Text>long: {cords.longitude.toFixed(3)}</Text>
+            <Text>lat:    {cords.latitude.toFixed(3)}</Text>
         </View>
 
     );
