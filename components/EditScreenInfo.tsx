@@ -8,7 +8,6 @@ export default function EditScreenInfo() {
       <View style={styles.getStartedContainer}>
         <ApiTest/>
       </View>
-
     </View>
   );
 }
