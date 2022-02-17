@@ -1,6 +1,7 @@
 {
   "expo": {
     "name": "grain-it",
+    "owner": "team-mka",
     "slug": "grain-it",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -19,7 +20,7 @@
       "**/*"
     ],
     "ios": {
-      "bundleIdentifier": "aau.888aaen.grain-it",
+      "bundleIdentifier": "aau.teammka.grain-it",
       "buildNumber": "0.0.1",
       "supportsTablet": true,
       "infoPlist": {
