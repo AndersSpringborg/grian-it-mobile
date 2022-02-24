@@ -5,7 +5,7 @@ import {TouchableOpacity} from "react-native";
 import * as Location from 'expo-location';
 import Colors from "../constants/Colors";
 
-export default ApiTest = () => {
+const ApiTest = () => {
     const [battery, setBattery] = useState<number>(0);
     const [cords, setCords] = useState<Location.LocationObject| undefined>();
     const [errorMsg, setErrorMsg] = useState("");
@@ -23,8 +23,8 @@ export default ApiTest = () => {
             }
             await sleep(100);
 
-            let location = await Location.getCurrentPositionAsync({});
-            setCords(location.coords);
+            await Location.getCurrentPositionAsync({}).then(location => setCords(location.coords));
+
         })();
     }
 
@@ -34,7 +34,10 @@ export default ApiTest = () => {
     }
 
     useEffect(() => {
-        updateProps()
+        updateProps();
+        const subscriber = Battery.addBatteryLevelListener(lisentner => setBattery(lisentner.batteryLevel));
+        return () => {subscriber.remove();}
+
     }, []);
 
     useEffect(() => {
@@ -55,6 +58,7 @@ export default ApiTest = () => {
         </View>)
 }
 
+export default ApiTest;
 interface GeoProps {
     cords: Location.LocationObjectCoords | undefined;
     errorMsg: string;
@@ -69,8 +73,8 @@ const GeoLocation: FC<GeoProps> = ({cords, errorMsg}) => {
 
     return(
         <View>
-            <Text>long: {cords.longitude.toFixed(3)}</Text>
-            <Text>lat:    {cords.latitude.toFixed(3)}</Text>
+            <Text>long: {cords.longitude.toFixed(10)}</Text>
+            <Text>lat:    {cords.latitude.toFixed(10)}</Text>
         </View>
 
     );
